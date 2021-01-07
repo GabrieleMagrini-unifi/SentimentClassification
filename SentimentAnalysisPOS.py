@@ -27,7 +27,7 @@ data_review_copy = data.review.copy()
 data_sentiment_copy = data.sentiment.copy()
 
 
-vectorizer = CountVectorizer()
+vectorizer = CountVectorizer(binary=True)
 
 for i in range(len(data)-1):
     data_review_copy[i] = str(nltk.pos_tag((data_review_copy[i]).split()))
