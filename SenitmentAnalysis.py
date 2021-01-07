@@ -10,6 +10,8 @@ import re
 
 data = pd.read_csv("data/data_review.tsv", delimiter="\t")
 
+print(data)
+
 rece = open("data/receFIFA21.txt")
 string_without_line_breaks = ""
 for line in rece:
