@@ -8,7 +8,7 @@ import nltk
 import re
 
 
-data = pd.read_csv("data/data_review_balanced.tsv", delimiter="\t")
+data = pd.read_csv("data/labeledTrainData.tsv", delimiter="\t")
 
 
 def simple_split(data, y, lenght, split_mark=0.7):
@@ -28,7 +28,7 @@ data_sentiment_copy = data.sentiment.copy()
 
 
 
-vectorizer = CountVectorizer(binary=True, min_df=4)  # Con binary = False, Frequency.
+vectorizer = CountVectorizer(binary=True, min_df=4)                                         # Con binary = False, Frequency.
 
 
 X_train, X_test, Y_train, Y_test, n = simple_split(data_review_copy, data_sentiment_copy, len(data))

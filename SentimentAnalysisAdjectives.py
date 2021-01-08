@@ -26,7 +26,7 @@ data_review_copy = data.review.copy()
 data_sentiment_copy = data.sentiment.copy()
 
 
-vectorizer = CountVectorizer(min_df=4)   # Con binary = False, Frequency.
+vectorizer = CountVectorizer(min_df=4)                                                   # Con binary = False, Frequency.
 
 for i in range(len(data) - 1):
     data_review_copy[i] = str(nltk.pos_tag((data_review_copy[i]).split()))
