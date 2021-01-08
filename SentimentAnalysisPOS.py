@@ -8,7 +8,7 @@ import nltk
 import re
 
 
-data = pd.read_csv("data/data_review.tsv", delimiter="\t")
+data = pd.read_csv("data/data_review_balanced.tsv", delimiter="\t")
 
 
 def simple_split(data, y, lenght, split_mark=0.7):
