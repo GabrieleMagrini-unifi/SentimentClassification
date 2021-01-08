@@ -37,7 +37,7 @@ data_review_copy = data.review.copy()
 data_sentiment_copy = data.sentiment.copy()
 
 
-vectorizer = CountVectorizer(binary=True)
+vectorizer = CountVectorizer( binary=True, min_df=4)       #ngram_range= (1,2) per unigrams+bigrams , =(2,2) per soli bigrams. Con binary = False, Frequency.
 
 
 X_train, X_test, Y_train, Y_test, n = simple_split(data_review_copy, data_sentiment_copy, len(data))
@@ -46,6 +46,7 @@ X_train, X_test, Y_train, Y_test, n = simple_split(data_review_copy, data_sentim
 X_train = vectorizer.fit_transform(X_train)
 X_test = vectorizer.transform(X_test)
 print(X_train)
+print(len(vectorizer.vocabulary_))
 X_try = vectorizer.transform(rece)
 
 perceptron = Perceptron()

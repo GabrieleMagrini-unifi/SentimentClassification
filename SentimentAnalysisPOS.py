@@ -27,7 +27,7 @@ data_review_copy = data.review.copy()
 data_sentiment_copy = data.sentiment.copy()
 
 
-vectorizer = CountVectorizer(binary=True)
+vectorizer = CountVectorizer(binary=True, min_df=4) # Con binary = False, Frequency.
 
 for i in range(len(data)-1):
     data_review_copy[i] = str(nltk.pos_tag((data_review_copy[i]).split()))
@@ -64,6 +64,8 @@ print(X_test[n+1])
 
 X_train = vectorizer.fit_transform(X_train)
 X_test = vectorizer.transform(X_test)
+
+print(len(vectorizer.vocabulary_))
 
 perceptron = Perceptron()
 perceptron.fit(X_train, Y_train)
