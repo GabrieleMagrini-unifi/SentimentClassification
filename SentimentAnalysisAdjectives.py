@@ -7,8 +7,8 @@ from sklearn import tree
 import nltk
 import re
 
-data = pd.read_csv("data/data_review.tsv", delimiter="\t")
 
+data = pd.read_csv("data/data_review.tsv", delimiter="\t")
 
 def simple_split(data, y, lenght, split_mark=0.7):
     if 0. < split_mark < 1.0:
