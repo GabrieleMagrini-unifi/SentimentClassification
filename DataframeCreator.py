@@ -22,6 +22,6 @@ for i in range(1, 1001):
 
 #data = data.sample(frac=1).reset_index(drop=True)          -> Permette uno shuffle randomico sul posto nell'ordine delle recensioni nel Dataframe.
 
-data.to_csv('data/data_review_balanced_reduced.tsv', sep='\t')
+data.to_csv('data/data_review_balanced.tsv', sep='\t')
 
 print(data)
