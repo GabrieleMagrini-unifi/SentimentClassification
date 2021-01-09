@@ -27,13 +27,11 @@ data_review_copy = data.review.copy()
 data_sentiment_copy = data.sentiment.copy()
 
 
-
 vectorizer = CountVectorizer(binary=True, min_df=4)                                         # Con binary = False, Frequency.
 
 
 X_train, X_test, Y_train, Y_test, n = simple_split(data_review_copy, data_sentiment_copy, len(data))
 
-print(X_test[n])
 
 for i in range(len(X_train)-1):
     X_train[i] = re.findall(r'\w+', X_train[i])
@@ -50,7 +48,6 @@ for i in range(len(X_train)-1):
 for i in range(len(X_train)-1):
     X_train[i] = str(X_train[i])
 
-print(X_train[10])
 
 
 for i in range(n, len(data)):
@@ -68,17 +65,18 @@ for i in range(n, len(data)):
 for i in range(n, len(data)):
     X_test[i] = str(X_test[i])
 
-print(X_test[n+1])
 
 X_train = vectorizer.fit_transform(X_train)
 X_test = vectorizer.transform(X_test)
 
-print(len(vectorizer.vocabulary_))
+print("# of Features: ", len(vectorizer.vocabulary_))
 
 perceptron = Perceptron()
 perceptron.fit(X_train, Y_train)
+
 print("Test score Perceptron: ", perceptron.score(X_test, Y_test))
 
 tree = tree.DecisionTreeClassifier()
 tree.fit(X_train, Y_train)
+
 print("Test score Tree: ", tree.score(X_test, Y_test))

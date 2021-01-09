@@ -10,7 +10,7 @@ import re
 
 data = pd.read_csv("data/data_review_balanced.tsv", delimiter="\t")
 
-print(data)
+print("Dataset: ", data)
 
 rece = open("data/receFIFA21.txt")
 string_without_line_breaks = ""
@@ -18,7 +18,8 @@ for line in rece:
   stripped_line = line.rstrip()
   string_without_line_breaks += stripped_line
 rece = [string_without_line_breaks]
-print(rece)
+
+print("Review: ", rece)
 
 
 def simple_split(data, y, lenght, split_mark=0.7):
@@ -45,17 +46,20 @@ X_train, X_test, Y_train, Y_test, n = simple_split(data_review_copy, data_sentim
 
 X_train = vectorizer.fit_transform(X_train)
 X_test = vectorizer.transform(X_test)
-print(X_train)
-print(len(vectorizer.vocabulary_))
+
+print("# of Features: ", len(vectorizer.vocabulary_))
+
 X_try = vectorizer.transform(rece)
 
 perceptron = Perceptron()
 perceptron.fit(X_train, Y_train)
+
 print("Test score Perceptron: ", perceptron.score(X_test, Y_test))
 
 tree = tree.DecisionTreeClassifier()
 tree.fit(X_train, Y_train)
+
 print("Test score Tree: ", tree.score(X_test, Y_test))
 
-print(perceptron.predict(X_try))
-print(tree.predict(X_try))
+print("Review sentiment based on perceptron :", perceptron.predict(X_try))
+print("Review sentiment based on tree :",tree.predict(X_try))
